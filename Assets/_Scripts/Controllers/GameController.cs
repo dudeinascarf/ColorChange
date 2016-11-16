@@ -179,7 +179,7 @@ public class GameController : MonoBehaviour {
 	//	Add losse counter and show simple ads
 	public void LosseCounterAds(){
 		if (losseCounter >= 3) {
-			WatchSimpleAdsAfterLosse ();
+			StartCoroutine(WatchSimpleAdsAfterLosse ());
 			losseCounter = 0;
 			ES2.Save (losseCounter, "LosseCounter");
 		} else {
@@ -189,9 +189,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	//	SIMPLE ADS
-	void WatchSimpleAdsAfterLosse(){
+	IEnumerator WatchSimpleAdsAfterLosse(){
 		if (Advertisement.IsReady())
 		{
+			yield return new WaitForSeconds (0.3f);
 			Advertisement.Show();
 		}
 	}
@@ -215,6 +216,7 @@ public class GameController : MonoBehaviour {
 			secondChancePanel.SetActive (false);
 			BallScript.instance.GetComponent<Rigidbody2D> ().isKinematic = false;
 			BallScript.instance.gameObject.transform.position = new Vector3 (0.0f, 2.0f, 1.0f);
+			GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = true;
 
 			break;
 		case ShowResult.Skipped:

@@ -19,8 +19,8 @@ public class RotatePalette : MonoBehaviour {
 	private Vector2 startPos;
 
 	//	PALETTE ROTATION
-//	[SerializeField]
-//	private float timeRandomRotate = 4.0f;
+	[SerializeField]
+	private float timeRandomRotate = 4.0f;
 
 
 	void Update(){
@@ -59,7 +59,7 @@ public class RotatePalette : MonoBehaviour {
 		}
 
 		//	Palette starts random rotation if ball's position.y more or equal 2.2f
-		//RandomPaletteBehavior();
+		RandomPaletteBehavior();
 	}
 
 	void RotateOnClick(){
@@ -76,21 +76,21 @@ public class RotatePalette : MonoBehaviour {
 
 	}
 
-//	void RandomPaletteBehavior(){
-//		
-//		timeRandomRotate -= Time.deltaTime;
-//	
-//		if (BallScript.instance.forceY >= 7.0f && BallScript.instance.gameObject.transform.position.y >= 2.5f && timeRandomRotate <= 0.0f) {
-//			
-//			if(Random.value<0.5f){
-//				rotation += rotationAngle;
-//			} else{
-//				rotation -= rotationAngle;
-//			}
-//
-//			qTo = Quaternion.Euler (0.0f, 0.0f, rotation);
-//			transform.rotation = Quaternion.RotateTowards (transform.rotation, qTo, 800.0f * Time.deltaTime);
-//			timeRandomRotate = 4.0f;
-//		}
-//	}
+	void RandomPaletteBehavior(){
+		
+		timeRandomRotate -= Time.deltaTime;
+	
+		if (GameController.instance.currentState == GameController.PaletteState.DodecagonPalette && BallScript.instance.gameObject.transform.position.y >= 0.5f && timeRandomRotate <= 0.0f) {
+			
+			if(Random.value<0.5f){
+				rotation += rotationAngle;
+			} else{
+				rotation -= rotationAngle;
+			}
+
+			qTo = Quaternion.Euler (0.0f, 0.0f, rotation);
+			transform.rotation = Quaternion.RotateTowards (transform.rotation, qTo, 800.0f * Time.deltaTime);
+			timeRandomRotate = 4.0f;
+		}
+	}
 }
