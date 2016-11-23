@@ -13,10 +13,15 @@ public class MainMenuBall : MonoBehaviour {
 	[SerializeField]
 	private Rigidbody2D rb2d;
 
+	public AudioClip ballBounceSound;
+
 
 	void OnTriggerEnter2D(Collider2D target){
 
 		if (target.tag == "Red") {
+
+			GetComponent<AudioSource> ().PlayOneShot (ballBounceSound);
+
 			DOTween.Rewind ("bounce");
 			DOTween.Play ("bounce");
 			rb2d.velocity = new Vector2 (0, forceY);

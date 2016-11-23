@@ -15,6 +15,7 @@ public class BallScript : MonoBehaviour {
 	private Material ballMat;
 
 
+
 	void Awake(){
 
 		if (instance == null) {
@@ -106,6 +107,7 @@ public class BallScript : MonoBehaviour {
 			}
 			break;
 		}
+
 
 //		if (target.tag == "Red") {
 //			if (GameController.instance.currentState == GameController.PaletteState.TrianglePalette) {

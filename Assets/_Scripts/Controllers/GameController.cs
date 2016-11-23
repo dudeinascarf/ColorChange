@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using System.Collections;
 using DG.Tweening;
+//using AppAdvisory.social;
 
 
 public class GameController : MonoBehaviour {
@@ -17,6 +18,9 @@ public class GameController : MonoBehaviour {
 	//	All colors palettes on the scene
 	public GameObject[] palettes;
 
+	public AudioClip[] ballBounceSound;
+	public AudioClip gameOverSound;
+
 	//	Variable to count is the player uses second chance
 	public int secondChanceCount;
 	public int score;
@@ -27,6 +31,8 @@ public class GameController : MonoBehaviour {
 	public GameObject secondChancePanel;
 	public Text scoreText;
 	public Text bestScoreText;
+	public GameObject supportUsButton;
+	public bool isSupportButtonUsed;
 
 	//	Variable to decrease ball force
 	[SerializeField]
@@ -49,7 +55,7 @@ public class GameController : MonoBehaviour {
 		SetCurrentState (PaletteState.TrianglePalette);
 
 		//	Start decreasing ball speed 
-		InvokeRepeating ("DecreaseBallBounceForce", 15.0f, 15.0f);
+		InvokeRepeating ("DecreaseBallBounceForce", 10.0f, 10.0f);
 
 		secondChanceCount = 0;
 
@@ -74,6 +80,13 @@ public class GameController : MonoBehaviour {
 		} else {
 			losseCounter = 0;
 		}
+
+		//	REMOVED SUPPORT US BUTTON
+		if (ES2.Exists ("SupportButton")) {
+			supportUsButton.SetActive (false);
+		} else {
+			supportUsButton.SetActive (true);
+		}
 	}
 
 	void Update(){
@@ -85,18 +98,21 @@ public class GameController : MonoBehaviour {
 			break;
 		case 15:
 			StartCoroutine (WaitAndChangePalette (PaletteState.SquarePalette));
+			BallScript.instance.forceY = 7.8f;
 			break;
-		case 29:
+		case 34:
 			BallScript.instance.forceY = 8.3f;
 			break;
-		case 30:
+		case 35:
 			StartCoroutine (WaitAndChangePalette (PaletteState.HexagonPalette));
+			BallScript.instance.forceY = 7.3f;
 			break;
-		case 39:
+		case 59:
 			BallScript.instance.forceY = 8.3f;
 			break;
-		case 40:
+		case 60:
 			StartCoroutine (WaitAndChangePalette (PaletteState.DodecagonPalette));
+			BallScript.instance.forceY = 6.8f;
 			break;
 		}
 	}
@@ -109,6 +125,7 @@ public class GameController : MonoBehaviour {
 	public void AddScore(){
 		score++;
 		scoreText.text = score.ToString ();
+		GetComponent<AudioSource> ().PlayOneShot (ballBounceSound [Random.Range (0, ballBounceSound.Length)]);
 	}
 
 	//	Best score
@@ -122,6 +139,7 @@ public class GameController : MonoBehaviour {
 
 	// Show game over or second chance panel
 	public void ShowPreferedPanel(GameObject panel){
+		GetComponent<AudioSource> ().PlayOneShot (gameOverSound);
 		StartCoroutine (WaitAndShowPanel (panel));
 	}
 
@@ -129,15 +147,18 @@ public class GameController : MonoBehaviour {
 	public void GiveUpButton(){
 		secondChancePanel.SetActive (false);
 		gameOverPanel.SetActive (true);
+		DOTween.Play ("BestScoreMove");
+		DOTween.Play ("BestScoreScale");
 	}
 		
 	//	Leaderboards button
 	public void ShowLeaderboards(){
 		Debug.Log ("Leaderboards");
+		//LeaderboardManager.ShowLeaderboardUI ();
 	}
-	//	Share button
-	public void ShareSocial(){
-		Debug.Log ("Sharing");
+	//	Report score to the leaderboard
+	public void ReportScore(){
+		//LeaderboardManager.ReportScore (bestScore);
 	}
 
 	IEnumerator WaitAndShowPanel(GameObject panel){
@@ -179,21 +200,11 @@ public class GameController : MonoBehaviour {
 	//	Add losse counter and show simple ads
 	public void LosseCounterAds(){
 		if (losseCounter >= 3) {
-			StartCoroutine(WatchSimpleAdsAfterLosse ());
 			losseCounter = 0;
 			ES2.Save (losseCounter, "LosseCounter");
 		} else {
 			losseCounter++;
 			ES2.Save (losseCounter, "LosseCounter");
-		}
-	}
-
-	//	SIMPLE ADS
-	IEnumerator WatchSimpleAdsAfterLosse(){
-		if (Advertisement.IsReady())
-		{
-			yield return new WaitForSeconds (0.3f);
-			Advertisement.Show();
 		}
 	}
 
@@ -216,7 +227,8 @@ public class GameController : MonoBehaviour {
 			secondChancePanel.SetActive (false);
 			BallScript.instance.GetComponent<Rigidbody2D> ().isKinematic = false;
 			BallScript.instance.gameObject.transform.position = new Vector3 (0.0f, 2.0f, 1.0f);
-			GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = true;
+			//	POWER UP
+			//GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = true;
 
 			break;
 		case ShowResult.Skipped:
@@ -227,4 +239,20 @@ public class GameController : MonoBehaviour {
 			break;
 		}
 	}
+
+	public void PauseButton(){
+		if (Time.timeScale >= 1.0f) {
+			Time.timeScale = 0.0f;
+		} else {
+			Time.timeScale = 1.0f;
+		}
+	}
+
+	//	Remove Support Us Button
+	public void RemoveSupportUsButton(){
+		isSupportButtonUsed = true;
+		supportUsButton.SetActive (false);
+		ES2.Save(isSupportButtonUsed, "SupportButton");
+	}
+
 }

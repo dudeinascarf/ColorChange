@@ -39,10 +39,11 @@ public class ColorColliderScript : MonoBehaviour {
 
 		} else {
 			//	If player losses once, show him second chance panel
-			if (GameController.instance.secondChanceCount == 0 && GameController.instance.score >= 15) {
+			if (GameController.instance.secondChanceCount == 0 && GameController.instance.score >= 30) {
 				other.gameObject.transform.position = new Vector3 (0.0f, other.gameObject.transform.position.y, 4.0f);
 				other.GetComponent<Rigidbody2D> ().isKinematic = true;
-				GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = false;
+				//	POWER UP
+				//GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = false;
 				GameController.instance.ShowPreferedPanel (GameController.instance.secondChancePanel);
 				DOTween.Play ("shakeCam");
 				GameController.instance.secondChanceCount += 1;
@@ -54,10 +55,12 @@ public class ColorColliderScript : MonoBehaviour {
 				GameController.instance.ShowPreferedPanel (GameController.instance.gameOverPanel);
 				DOTween.Restart ("shakeCam");
 				transform.parent.GetComponent<RotatePalette> ().enabled = false;
-				GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = false;
+				//	POWER UP
+				//GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = false;
 				Destroy (other.gameObject);
 				DOTween.Play ("BestScoreMove");
 				DOTween.Play ("BestScoreScale");
+				GameController.instance.ReportScore ();
 
 			}
 
