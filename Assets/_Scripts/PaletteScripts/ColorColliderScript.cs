@@ -11,8 +11,8 @@ public class ColorColliderScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 
 		if (other.tag == ballTag) {
-			//DOTween.Rewind ("bounce");
-			//DOTween.Play ("bounce");
+			DOTween.Rewind ("bounce");
+			DOTween.Play ("bounce");
 
 			//	Background Bounce
 			DOTween.Rewind("bsqs1");
@@ -40,7 +40,7 @@ public class ColorColliderScript : MonoBehaviour {
 		} else {
 			//	If player losses once, show him second chance panel
 			if (GameController.instance.secondChanceCount == 0 && GameController.instance.score >= 30) {
-				other.gameObject.transform.position = new Vector3 (0.0f, other.gameObject.transform.position.y, 4.0f);
+				other.gameObject.transform.position = new Vector3 (0.0f, other.gameObject.transform.position.y, -30.0f);
 				other.GetComponent<Rigidbody2D> ().isKinematic = true;
 				//	POWER UP
 				//GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = false;

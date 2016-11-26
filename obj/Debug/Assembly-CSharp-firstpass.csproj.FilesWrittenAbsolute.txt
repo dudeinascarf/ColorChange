@@ -25,3 +25,11 @@
 /Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/UnityEngine.Purchasing.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Common.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Editor.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Security.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Stores.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Apple.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Tizen.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/winrt.dll

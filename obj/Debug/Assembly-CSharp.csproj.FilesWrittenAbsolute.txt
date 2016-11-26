@@ -27,3 +27,11 @@
 /Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/ES2.dll
 /Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
 /Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/UnityEngine.Purchasing.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Common.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Editor.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Security.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Stores.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Apple.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/Tizen.dll
+/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Temp/bin/Debug/winrt.dll

@@ -16,6 +16,8 @@ public class MainMenuController : MonoBehaviour {
 	[SerializeField]
 	private Text bestScoreText;
 
+	public bool audioIsMute;
+
 
 	void Awake(){
 		if (instance == null) {
@@ -30,6 +32,18 @@ public class MainMenuController : MonoBehaviour {
 			bestScore = 0;
 		}
 		bestScoreText.text = bestScore.ToString ();
+
+		audioIsMute = false;
+	}
+
+	public void AudioMute(){
+		if (audioIsMute == true) {
+			AudioListener.pause = false;
+			audioIsMute = false;
+		} else {
+			AudioListener.pause = true;
+			audioIsMute = true;
+		}
 	}
 		
 }

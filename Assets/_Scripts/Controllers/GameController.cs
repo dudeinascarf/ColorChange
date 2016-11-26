@@ -98,21 +98,18 @@ public class GameController : MonoBehaviour {
 			break;
 		case 15:
 			StartCoroutine (WaitAndChangePalette (PaletteState.SquarePalette));
-			BallScript.instance.forceY = 7.8f;
 			break;
 		case 34:
 			BallScript.instance.forceY = 8.3f;
 			break;
 		case 35:
 			StartCoroutine (WaitAndChangePalette (PaletteState.HexagonPalette));
-			BallScript.instance.forceY = 7.3f;
 			break;
 		case 59:
 			BallScript.instance.forceY = 8.3f;
 			break;
 		case 60:
 			StartCoroutine (WaitAndChangePalette (PaletteState.DodecagonPalette));
-			BallScript.instance.forceY = 6.8f;
 			break;
 		}
 	}
@@ -227,6 +224,7 @@ public class GameController : MonoBehaviour {
 			secondChancePanel.SetActive (false);
 			BallScript.instance.GetComponent<Rigidbody2D> ().isKinematic = false;
 			BallScript.instance.gameObject.transform.position = new Vector3 (0.0f, 2.0f, 1.0f);
+			BallScript.instance.forceY = 8.3f;
 			//	POWER UP
 			//GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = true;
 
