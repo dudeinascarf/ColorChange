@@ -49,12 +49,17 @@
      <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
      <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
      <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
+     <None Include="Assets\GooglePlayGames\Editor\template-GameInfo.txt" />
      <None Include="Assets\Easy Save 2\changelog.txt" />
+     <None Include="Assets\Plugins\Android\MainLibProj\AndroidManifest.xml" />
+     <None Include="Assets\GooglePlayGames\Editor\template-AndroidManifest.txt" />
      <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
      <None Include="Assets\Easy Save 2\readme.txt" />
+     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver.txt" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
      <None Include="Assets\link.xml" />
+     <None Include="Assets\GooglePlayGames\Editor\template-Constants.txt" />
      <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
      <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
  <Reference Include="UnityEngine.Advertisements">
@@ -90,6 +95,15 @@
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
+ <Reference Include="AssetStoreTools (1)">
+ <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/AssetStoreTools/Editor/AssetStoreTools (1).dll</HintPath>
+ </Reference>
+ <Reference Include="AssetStoreTools">
+ <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/AssetStoreTools/Editor/AssetStoreTools.dll</HintPath>
+ </Reference>
+ <Reference Include="AssetStoreToolsExtra">
+ <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/AssetStoreTools/Editor/AssetStoreToolsExtra.dll</HintPath>
+ </Reference>
  <Reference Include="DemiLib">
  <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
  </Reference>
@@ -116,6 +130,15 @@
  </Reference>
  <Reference Include="DOTweenProEditor">
  <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver">
+ <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/PlayServicesResolver/Editor/Google.IOSResolver.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver">
+ <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/PlayServicesResolver/Editor/Google.JarResolver.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>
  <Reference Include="ES2">
  <HintPath>/Users/Dudeinascarf/Desktop/ThreeFastGames/ColorChange/Assets/Plugins/ES2.dll</HintPath>

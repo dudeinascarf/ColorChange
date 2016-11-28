@@ -50,7 +50,7 @@ public class ColorColliderScript : MonoBehaviour {
 
 			//	If player losses again, show him game over panel
 			} else {
-				Debug.Log ("GAME OVER");
+				GameController.instance.ReportScore ();
 				GameController.instance.LosseCounterAds ();
 				GameController.instance.ShowPreferedPanel (GameController.instance.gameOverPanel);
 				DOTween.Restart ("shakeCam");

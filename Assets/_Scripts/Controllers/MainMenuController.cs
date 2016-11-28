@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SocialPlatforms;
 using System.Collections;
+using GooglePlayGames;
 
 
 public class MainMenuController : MonoBehaviour {
@@ -17,12 +19,16 @@ public class MainMenuController : MonoBehaviour {
 	private Text bestScoreText;
 
 	public bool audioIsMute;
+	private bool isConnectedToGoogleServices;
 
 
 	void Awake(){
 		if (instance == null) {
 			instance = this;
 		}
+
+		//	Loging to google play game services
+		PlayGamesPlatform.Activate ();
 	}
 
 	void Start(){
@@ -34,6 +40,8 @@ public class MainMenuController : MonoBehaviour {
 		bestScoreText.text = bestScore.ToString ();
 
 		audioIsMute = false;
+
+		ConnectToGoogleServices ();
 	}
 
 	public void AudioMute(){
@@ -44,6 +52,15 @@ public class MainMenuController : MonoBehaviour {
 			AudioListener.pause = true;
 			audioIsMute = true;
 		}
+	}
+
+	public bool ConnectToGoogleServices(){
+		if (!isConnectedToGoogleServices) {
+			Social.localUser.Authenticate ((bool success) => {
+				isConnectedToGoogleServices = success;
+			});
+		}
+		return isConnectedToGoogleServices;
 	}
 		
 }

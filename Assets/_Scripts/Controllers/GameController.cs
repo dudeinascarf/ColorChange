@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using UnityEngine.SocialPlatforms;
 using System.Collections;
 using DG.Tweening;
-//using AppAdvisory.social;
+using GooglePlayGames;
 
 
 public class GameController : MonoBehaviour {
@@ -142,6 +143,7 @@ public class GameController : MonoBehaviour {
 
 	//	Close second chance panel and show game over panel
 	public void GiveUpButton(){
+		ReportScore ();
 		secondChancePanel.SetActive (false);
 		gameOverPanel.SetActive (true);
 		DOTween.Play ("BestScoreMove");
@@ -151,11 +153,15 @@ public class GameController : MonoBehaviour {
 	//	Leaderboards button
 	public void ShowLeaderboards(){
 		Debug.Log ("Leaderboards");
-		//LeaderboardManager.ShowLeaderboardUI ();
+		if (Social.localUser.authenticated) {
+			PlayGamesPlatform.Instance.ShowLeaderboardUI (GPGSIds.leaderboard_best_score);
+		}
 	}
 	//	Report score to the leaderboard
 	public void ReportScore(){
-		//LeaderboardManager.ReportScore (bestScore);
+		Social.ReportScore (score, GPGSIds.leaderboard_best_score, (bool success) => {
+
+		});
 	}
 
 	IEnumerator WaitAndShowPanel(GameObject panel){
