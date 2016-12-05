@@ -8,7 +8,7 @@ public class MainMenuBall : MonoBehaviour {
 	//	It's just jumping that's all
 
 	[SerializeField]
-	private float forceY = 8.0f;
+	private float forceY = 9.0f;
 
 	[SerializeField]
 	private Rigidbody2D rb2d;

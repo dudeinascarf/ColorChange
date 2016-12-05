@@ -6,13 +6,14 @@ public class BallScript : MonoBehaviour {
 	public static BallScript instance;
 
 	//	Ball start vertical force
-	public float forceY = 8.3f;
+	public float forceY = 9.0f;
 
 	//	Ball color array (6 colors)
 	public Color[] colors;
 
 	private Rigidbody2D rb2d;
-	private Material ballMat;
+	[HideInInspector]
+	public Material ballMat;
 
 
 
@@ -32,8 +33,8 @@ public class BallScript : MonoBehaviour {
 		//	Track maximum and minimum ball force
 
 		//	If force more or equal than N it will stay N
-		if (forceY >= 8.3f) {
-			forceY = 8.3f;
+		if (forceY >= 9.0f) {
+			forceY = 9.0f;
 
 		//	If force less or equal than N it will stay N
 		} else if (forceY <= 5.5f) {

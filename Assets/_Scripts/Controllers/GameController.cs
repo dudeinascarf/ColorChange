@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour {
 		SetCurrentState (PaletteState.TrianglePalette);
 
 		//	Start decreasing ball speed 
-		InvokeRepeating ("DecreaseBallBounceForce", 10.0f, 10.0f);
+		InvokeRepeating ("DecreaseBallBounceForce", 12.0f, 12.0f);
 
 		secondChanceCount = 0;
 
@@ -95,22 +95,25 @@ public class GameController : MonoBehaviour {
 		//	Changing color palette and ball force depending on the score
 		switch (score) {
 		case 14:
-			BallScript.instance.forceY = 8.3f;
+			BallScript.instance.forceY = 8.5f;
 			break;
 		case 15:
 			StartCoroutine (WaitAndChangePalette (PaletteState.SquarePalette));
+			BallScript.instance.ballMat.color = BallScript.instance.colors [2];		//	Changing ball color to red
 			break;
 		case 34:
-			BallScript.instance.forceY = 8.3f;
+			BallScript.instance.forceY = 8.5f;
 			break;
 		case 35:
 			StartCoroutine (WaitAndChangePalette (PaletteState.HexagonPalette));
+			BallScript.instance.ballMat.color = BallScript.instance.colors [2];		//	Changing ball color to red
 			break;
 		case 59:
-			BallScript.instance.forceY = 8.3f;
+			BallScript.instance.forceY = 8.5f;
 			break;
 		case 60:
 			StartCoroutine (WaitAndChangePalette (PaletteState.DodecagonPalette));
+			BallScript.instance.ballMat.color = BallScript.instance.colors [2];		//	Changing ball color to red
 			break;
 		}
 	}
@@ -138,12 +141,13 @@ public class GameController : MonoBehaviour {
 	// Show game over or second chance panel
 	public void ShowPreferedPanel(GameObject panel){
 		GetComponent<AudioSource> ().PlayOneShot (gameOverSound);
+		ReportScore ();
 		StartCoroutine (WaitAndShowPanel (panel));
 	}
 
 	//	Close second chance panel and show game over panel
 	public void GiveUpButton(){
-		ReportScore ();
+		
 		secondChancePanel.SetActive (false);
 		gameOverPanel.SetActive (true);
 		DOTween.Play ("BestScoreMove");
@@ -154,14 +158,19 @@ public class GameController : MonoBehaviour {
 	public void ShowLeaderboards(){
 		Debug.Log ("Leaderboards");
 		if (Social.localUser.authenticated) {
-			PlayGamesPlatform.Instance.ShowLeaderboardUI (GPGSIds.leaderboard_best_score);
+			Social.ShowLeaderboardUI();
 		}
 	}
 	//	Report score to the leaderboard
 	public void ReportScore(){
-		Social.ReportScore (score, GPGSIds.leaderboard_best_score, (bool success) => {
 
-		});
+		long bestScoreLong = (long)bestScore;
+
+		if (Social.localUser.authenticated) {
+			Social.ReportScore (bestScoreLong, "CgkIm7S35tUOEAIQAQ", (bool success) => {
+
+			});
+		}
 	}
 
 	IEnumerator WaitAndShowPanel(GameObject panel){
@@ -230,7 +239,7 @@ public class GameController : MonoBehaviour {
 			secondChancePanel.SetActive (false);
 			BallScript.instance.GetComponent<Rigidbody2D> ().isKinematic = false;
 			BallScript.instance.gameObject.transform.position = new Vector3 (0.0f, 2.0f, 1.0f);
-			BallScript.instance.forceY = 8.3f;
+			BallScript.instance.forceY = 8.5f;
 			//	POWER UP
 			//GameObject.FindWithTag ("PowerUp").GetComponent<PowerUpBehavior> ().enabled = true;
 

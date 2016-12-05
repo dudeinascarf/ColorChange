@@ -18,6 +18,8 @@ public class RotatePalette : MonoBehaviour {
 
 	private Vector2 startPos;
 
+	public bool isSwipeControll;
+
 	//	PALETTE ROTATION
 	[SerializeField]
 	private float timeRandomRotate = 4.0f;
@@ -25,14 +27,59 @@ public class RotatePalette : MonoBehaviour {
 
 	void Update(){
 
-		//	Keyboard Rotate palette
+		#if UNITY_EDITOR
 		RotateOnClick ();
+		#endif
 
+		if (ES2.Exists ("SwipeControl")) {
+			isSwipeControll = ES2.Load<bool> ("SwipeControl");
+		}
+
+		if (isSwipeControll == true) {
+			RotateOnSwipe ();
+		} else {
+			RotateOnTouch ();
+		}
+			
+		//	Palette starts random rotation if ball's position.y more or equal 2.2f
+		//RandomPaletteBehavior();
+	}
+
+	//	Rotate palette by A and D buttons, for testing
+	private void RotateOnClick(){
+
+		if (Input.GetKeyDown(KeyCode.A)) {
+			rotation += rotationAngle;
+			qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
+		}
+		if (Input.GetKeyDown(KeyCode.D)) {
+			rotation -= rotationAngle;
+			qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
+		}
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
+	}
+
+	//	Rotate palette by touch left or right
+	private void RotateOnTouch(){
+		if (Input.GetMouseButtonDown(0)) {
+			if (Input.mousePosition.x < Screen.width / 2) {
+				rotation += rotationAngle;
+				qTo = Quaternion.Euler (0.0f, 0.0f, rotation);
+			}
+			else if (Input.mousePosition.x > Screen.width / 2) {
+				rotation -= rotationAngle;
+				qTo = Quaternion.Euler (0.0f, 0.0f, rotation);
+			}
+		}
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
+	}
+		
+	//	Rotate palette by swiping your pretty fingers
+	private void RotateOnSwipe(){
 		qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
 
 		//	Touch Rotate palette
 		if (Input.touchCount > 0) {
-
 			Touch touch = Input.touches[0];
 
 			switch (touch.phase) {
@@ -57,23 +104,6 @@ public class RotatePalette : MonoBehaviour {
 				break;
 			}
 		}
-
-		//	Palette starts random rotation if ball's position.y more or equal 2.2f
-		//RandomPaletteBehavior();
-	}
-
-	void RotateOnClick(){
-
-		if (Input.GetKeyDown(KeyCode.A)) {
-			rotation += rotationAngle;
-			qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
-		}
-		if (Input.GetKeyDown(KeyCode.D)) {
-			rotation -= rotationAngle;
-			qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
-		}
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
-
 	}
 
 //	void RandomPaletteBehavior(){
