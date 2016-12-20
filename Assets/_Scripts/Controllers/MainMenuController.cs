@@ -22,10 +22,12 @@ public class MainMenuController : MonoBehaviour {
 	public GameObject swipeTutorialPanel;
 	public GameObject tapTutorialPanel;
 	public Text changedControlText;
+	public Text controlsButtonText;
 
 	public bool audioIsMute;
 	public bool controlsIsSwipe;
 	private bool isLoggedInServices;
+	private bool isControlsButtonTextShown;
 
 
 	void Awake(){
@@ -46,6 +48,12 @@ public class MainMenuController : MonoBehaviour {
 			controlsIsSwipe = ES2.Load<bool> ("SwipeControl");
 		} else {
 			controlsIsSwipe = true;
+		}
+
+		if (ES2.Exists ("ControlsButtonText")) {
+			controlsButtonText.text = "";
+		} else {
+			controlsButtonText.text = "CONTROLS";
 		}
 
 		audioIsMute = false;
@@ -73,6 +81,11 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	public void ChangeControlsButton(){
+
+		isControlsButtonTextShown = false;
+		ES2.Save (isControlsButtonTextShown, "ControlsButtonText");
+		controlsButtonText.text = "";
+
 		if (controlsIsSwipe) {
 			controlsIsSwipe = false;
 			ES2.Save (controlsIsSwipe, "SwipeControl");
