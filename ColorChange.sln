@@ -9,6 +9,10 @@ Project("{CC01FC2B-39A7-0E74-9422-47BDF21743ED}") = "ColorChange", "Assembly-CSh
 EndProject
 Project("{CC01FC2B-39A7-0E74-9422-47BDF21743ED}") = "ColorChange", "Assembly-CSharp-Editor.csproj", "{88131821-C0E1-2083-67C4-F716FD347D7E}"
 EndProject
+Project("{CC01FC2B-39A7-0E74-9422-47BDF21743ED}") = "ColorChange", "Assembly-UnityScript.unityproj", "{B34E25D3-167C-C716-A635-2E4947FE3880}"
+EndProject
+Project("{CC01FC2B-39A7-0E74-9422-47BDF21743ED}") = "ColorChange", "Assembly-UnityScript-Editor.unityproj", "{66E43FD1-C2A7-465A-73D2-435F170A0EDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{88131821-C0E1-2083-67C4-F716FD347D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88131821-C0E1-2083-67C4-F716FD347D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88131821-C0E1-2083-67C4-F716FD347D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34E25D3-167C-C716-A635-2E4947FE3880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34E25D3-167C-C716-A635-2E4947FE3880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34E25D3-167C-C716-A635-2E4947FE3880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34E25D3-167C-C716-A635-2E4947FE3880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66E43FD1-C2A7-465A-73D2-435F170A0EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66E43FD1-C2A7-465A-73D2-435F170A0EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66E43FD1-C2A7-465A-73D2-435F170A0EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66E43FD1-C2A7-465A-73D2-435F170A0EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

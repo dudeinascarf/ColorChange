@@ -31,15 +31,17 @@ public class RotatePalette : MonoBehaviour {
 		RotateOnClick ();
 		#endif
 
-		if (ES2.Exists ("SwipeControl")) {
-			isSwipeControll = ES2.Load<bool> ("SwipeControl");
-		}
+//		if (ES2.Exists ("SwipeControl")) {
+//			isSwipeControll = ES2.Load<bool> ("SwipeControl");
+//		}
 
-		if (isSwipeControll == true) {
-			RotateOnSwipe ();
-		} else {
-			RotateOnTouch ();
-		}
+		RotateOnTouch ();
+
+//		if (isSwipeControll == true) {
+//			RotateOnSwipe ();
+//		} else {
+//			RotateOnTouch ();
+//		}
 			
 		//	Palette starts random rotation if ball's position.y more or equal 2.2f
 		//RandomPaletteBehavior();
@@ -75,36 +77,36 @@ public class RotatePalette : MonoBehaviour {
 	}
 		
 	//	Rotate palette by swiping your pretty fingers
-	private void RotateOnSwipe(){
-		qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
-
-		//	Touch Rotate palette
-		if (Input.touchCount > 0) {
-			Touch touch = Input.touches[0];
-
-			switch (touch.phase) {
-
-			case TouchPhase.Began:
-				startPos = touch.position;
-				break;
-
-			case TouchPhase.Ended:
-				float swipeDistHorizontal = (new Vector3 (touch.position.x, 0, 0) - new Vector3 (startPos.x, 0, 0)).magnitude;
-
-				if (swipeDistHorizontal > minSwipeDistX) {
-					float swipeValue = Mathf.Sign (touch.position.x - startPos.x);
-
-					if (swipeValue > 0) {//MoveRight ();
-						rotation -= rotationAngle;
-					}else if (swipeValue < 0) {//MoveLeft ();
-						rotation += rotationAngle;
-					}
-					transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
-				}
-				break;
-			}
-		}
-	}
+//	private void RotateOnSwipe(){
+//		qTo = Quaternion.Euler(0.0f, 0.0f, rotation);
+//
+//		//	Touch Rotate palette
+//		if (Input.touchCount > 0) {
+//			Touch touch = Input.touches[0];
+//
+//			switch (touch.phase) {
+//
+//			case TouchPhase.Began:
+//				startPos = touch.position;
+//				break;
+//
+//			case TouchPhase.Ended:
+//				float swipeDistHorizontal = (new Vector3 (touch.position.x, 0, 0) - new Vector3 (startPos.x, 0, 0)).magnitude;
+//
+//				if (swipeDistHorizontal > minSwipeDistX) {
+//					float swipeValue = Mathf.Sign (touch.position.x - startPos.x);
+//
+//					if (swipeValue > 0) {//MoveRight ();
+//						rotation -= rotationAngle;
+//					}else if (swipeValue < 0) {//MoveLeft ();
+//						rotation += rotationAngle;
+//					}
+//					transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
+//				}
+//				break;
+//			}
+//		}
+//	}
 
 //	void RandomPaletteBehavior(){
 //		

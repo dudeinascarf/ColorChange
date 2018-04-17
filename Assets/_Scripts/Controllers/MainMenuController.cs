@@ -19,13 +19,13 @@ public class MainMenuController : MonoBehaviour {
 	[SerializeField]
 	private Text bestScoreText;
 
-	public GameObject swipeTutorialPanel;
+//	public GameObject swipeTutorialPanel;
 	public GameObject tapTutorialPanel;
-	public Text changedControlText;
-	public Text controlsButtonText;
+//	public Text changedControlText;
+//	public Text controlsButtonText;
 
 	public bool audioIsMute;
-	public bool controlsIsSwipe;
+//	public bool controlsIsSwipe;
 	private bool isLoggedInServices;
 	private bool isControlsButtonTextShown;
 
@@ -44,17 +44,17 @@ public class MainMenuController : MonoBehaviour {
 		}
 		bestScoreText.text = bestScore.ToString ();
 
-		if (ES2.Exists ("SwipeControl")) {
-			controlsIsSwipe = ES2.Load<bool> ("SwipeControl");
-		} else {
-			controlsIsSwipe = true;
-		}
-
-		if (ES2.Exists ("ControlsButtonText")) {
-			controlsButtonText.text = "";
-		} else {
-			controlsButtonText.text = "CONTROLS";
-		}
+//		if (ES2.Exists ("SwipeControl")) {
+//			controlsIsSwipe = ES2.Load<bool> ("SwipeControl");
+//		} else {
+//			controlsIsSwipe = true;
+//		}
+//
+//		if (ES2.Exists ("ControlsButtonText")) {
+//			controlsButtonText.text = "";
+//		} else {
+//			controlsButtonText.text = "CONTROLS";
+//		}
 
 		audioIsMute = false;
 
@@ -80,35 +80,38 @@ public class MainMenuController : MonoBehaviour {
 		}
 	}
 
-	public void ChangeControlsButton(){
-
-		isControlsButtonTextShown = false;
-		ES2.Save (isControlsButtonTextShown, "ControlsButtonText");
-		controlsButtonText.text = "";
-
-		if (controlsIsSwipe) {
-			controlsIsSwipe = false;
-			ES2.Save (controlsIsSwipe, "SwipeControl");
-			changedControlText.text = "TAP";
-			DOTween.Rewind("changeControl");
-			DOTween.Play("changeControl");
-
-		} else {
-			controlsIsSwipe = true;
-			ES2.Save (controlsIsSwipe, "SwipeControl");
-			changedControlText.text = "SWIPE";
-			DOTween.Rewind("changeControl");
-			DOTween.Play("changeControl");
-
-		}
-	}
+//	public void ChangeControlsButton(){
+//
+//		isControlsButtonTextShown = false;
+//		ES2.Save (isControlsButtonTextShown, "ControlsButtonText");
+//		controlsButtonText.text = "";
+//
+//		if (controlsIsSwipe) {
+//			controlsIsSwipe = false;
+//			ES2.Save (controlsIsSwipe, "SwipeControl");
+//			changedControlText.text = "TAP";
+//			DOTween.Rewind("changeControl");
+//			DOTween.Play("changeControl");
+//
+//		} else {
+//			controlsIsSwipe = true;
+//			ES2.Save (controlsIsSwipe, "SwipeControl");
+//			changedControlText.text = "SWIPE";
+//			DOTween.Rewind("changeControl");
+//			DOTween.Play("changeControl");
+//
+//		}
+//	}
 
 	public void OpenTutorialPanel(){
-		if (controlsIsSwipe) {
-			swipeTutorialPanel.SetActive (true);
-		} else {
-			tapTutorialPanel.SetActive (true);
-		}
+
+		tapTutorialPanel.SetActive (true);
+
+//		if (controlsIsSwipe) {
+//			swipeTutorialPanel.SetActive (true);
+//		} else {
+//			tapTutorialPanel.SetActive (true);
+//		}
 	}
 
 	public void LoginServices(){
